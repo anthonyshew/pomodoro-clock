@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Timemaker from './components/Timemaker.js';
+import Timer from './components/Timer.js';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="vp-center">
+      <h1>A Pomodoro Clock</h1>
+      <h2>WORK HARD, <span className="little-text"> but rest when you need to.</span></h2>
+        < Timemaker title="Work" />
+        < Timemaker title="Rest" />
+        <button className="start-clock">Start</button>
+        < Timer time="20:00" phase="Work"/>
+        < Timer time="10:00" phase="Rest"/>
+        </div>
       </div>
     );
   }
