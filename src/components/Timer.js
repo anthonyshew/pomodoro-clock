@@ -1,6 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 
-export default class Timer extends Component {
+class Timer extends Component {
+
+  shouldComponentUpdate(nextProps) {
+    console.log(nextProps.time);
+    return true;
+}
   render() {
     return (
       <div className="timer">
@@ -14,3 +21,13 @@ export default class Timer extends Component {
     )
   }
 };
+
+Timer.propTypes = {
+  time: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = state => ({
+  time: state.makeClock.time,
+});
+
+export default connect (mapStateToProps, null)(Timer);

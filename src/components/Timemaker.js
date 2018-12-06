@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 
-export default class Timer extends Component {
+import { timeSet } from '../actions/makeActions.js'
+
+class Timemaker extends Component {
 
   constructor(props) {
     super(props);
@@ -14,14 +18,27 @@ export default class Timer extends Component {
 
   timeChange(e) {
     if (e.target.className === "decrementer") {
-      this.setState({
-        counter: this.state.counter - 1
-      })
+      if (this.state.counter >= 1) {
+        let num = this.state.counter - 1;
+        this.setState({
+          counter: this.state.counter - 1
+        });
+        timeSet(num, e);
+      } else {
+        console.log("We can't do negative time!");
+      }
     } else if (e.target.className === "incrementer") {
-      this.setState({
-        counter: this.state.counter + 1
-      })
+      if (this.state.counter <= 59) {
+        let num = this.state.counter + 1;
+        this.setState({
+          counter: this.state.counter + 1
+        });
+        timeSet(num, e);
+      } else {
+        console.log("More than hour?! You don't even need a Pomodoro Clock!");
+      }
     }
+
   }
 
   render() {
@@ -37,3 +54,9 @@ export default class Timer extends Component {
     )
   }
 };
+
+Timemaker.propTypes = {
+  timeSet: PropTypes.func.isRequired
+}
+
+export default connect(null, { timeSet }) (Timemaker);
