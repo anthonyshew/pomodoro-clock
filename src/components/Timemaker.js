@@ -59,20 +59,33 @@ class Timemaker extends Component {
           console.log("More than hour?! You don't even need a Pomodoro Clock!");
         }
     }
-}
+  }
 
   render() {
+    if(this.props.phase === 'Work') {
     return (
-      <div className="timemaker">
+      <div className={"timemaker-"+this.props.phase}>
         <h2 className="phase-maker">{this.props.phase}</h2>
         <div className="timer-setter-">
           <span className={"decrementer-"+this.props.phase} onClick={this.timeChange}>Less time!</span>
-          <span className="time-adjuster">{this.state.workCounter}{this.state.restCounter}</span>
+          <span id="l" className="time-adjuster">{this.state.workCounter}</span>
+          <span className={"incrementer-"+this.props.phase} onClick={this.timeChange}>More time!</span>
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className={"timemaker-"+this.props.phase}>
+        <h2 className="phase-maker">{this.props.phase}</h2>
+        <div className="timer-setter-">
+          <span className={"decrementer-"+this.props.phase} onClick={this.timeChange}>Less time!</span>
+          <span id="l" className="time-adjuster">{this.state.restCounter}</span>
           <span className={"incrementer-"+this.props.phase} onClick={this.timeChange}>More time!</span>
         </div>
       </div>
     )
   }
+}
 };
 
 Timemaker.propTypes = {

@@ -18,8 +18,8 @@ class App extends Component {
           < Timemaker phase="Work" />
           < Timemaker phase="Rest" />
           < button className="start-clock">Start</ button>
-          < Timer phase="Work" work={5}/>
-          < Timer phase="Rest" rest={4}/>
+          < Timer phase="Work" />
+          < Timer phase="Rest" />
           </div>
       </div>
       </Provider>

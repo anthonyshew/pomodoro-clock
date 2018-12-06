@@ -5,10 +5,22 @@ import { connect } from "react-redux";
 class Timer extends Component {
 
   render() {
+    if(this.props.phase === "Work") {
     return (
       <div className="timer">
         <div className="display-">
-            {this.props.work}{this.props.rest}
+            {this.props.work}
+        </div>
+        <div className="phase-timer">
+            {this.props.phase}
+        </div>
+    </div>
+    )
+  } else {
+    return (
+      <div className="timer">
+        <div className="display-">
+            {this.props.rest}
         </div>
         <div className="phase-timer">
             {this.props.phase}
@@ -16,6 +28,7 @@ class Timer extends Component {
     </div>
     )
   }
+}
 };
 
 Timer.propTypes = {

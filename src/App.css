@@ -32,7 +32,7 @@
   font-size: 12px;
 }
 
-.timemaker, .timer {
+.timemaker-Work, .timemaker-Rest, .timer {
   display: inline-block;
   width: 50vw;
   margin-top: 2rem;
