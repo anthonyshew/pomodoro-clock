@@ -4,17 +4,13 @@ import { connect } from "react-redux";
 
 class Timer extends Component {
 
-  shouldComponentUpdate(nextProps) {
-    console.log(nextProps.time);
-    return true;
-}
   render() {
     return (
       <div className="timer">
-        <div className="display">
-            {this.props.time}
+        <div className="display-">
+            {this.props.work}{this.props.rest}
         </div>
-        <div className="phase">
+        <div className="phase-timer">
             {this.props.phase}
         </div>
     </div>
@@ -23,11 +19,13 @@ class Timer extends Component {
 };
 
 Timer.propTypes = {
-  time: PropTypes.number.isRequired,
+  work: PropTypes.number.isRequired,
+  rest: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
-  time: state.makeClock.time,
+  work: state.makeClock.work,
+  rest: state.makeClock.rest,
 });
 
 export default connect (mapStateToProps, null)(Timer);

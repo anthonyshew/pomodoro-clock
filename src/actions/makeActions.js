@@ -1,9 +1,16 @@
-import { CLOCK_UPDATE } from './types';
+import { WORK_UPDATE, REST_UPDATE } from './types';
 import store  from '../store';
 
-export const timeSet = (num) => {
+export const workSet = (work) => {
     store.dispatch({
-        type: CLOCK_UPDATE,
-        payload: num
+        type: WORK_UPDATE,
+        payload: work
+    })
+}
+
+export const restSet = (rest) => {
+    store.dispatch({
+        type: REST_UPDATE,
+        payload: rest
     })
 }

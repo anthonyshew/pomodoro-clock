@@ -15,11 +15,11 @@ class App extends Component {
         <div className="vp-center">
           <h1>A Pomodoro Clock</h1>
           <h2>WORK HARD, <span className="little-text"> but rest when you need to.</span></h2>
-          < Timemaker title="Work" />
-          < Timemaker title="Rest" />
+          < Timemaker phase="Work" />
+          < Timemaker phase="Rest" />
           < button className="start-clock">Start</ button>
-          < Timer phase="Work"/>
-          < Timer phase="Rest"/>
+          < Timer phase="Work" work={5}/>
+          < Timer phase="Rest" rest={4}/>
           </div>
       </div>
       </Provider>
