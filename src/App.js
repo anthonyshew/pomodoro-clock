@@ -17,9 +17,7 @@ class App extends Component {
           <h2>WORK HARD, <span className="little-text"> but rest when you need to.</span></h2>
           < Timemaker phase="Work" />
           < Timemaker phase="Rest" />
-          < button className="start-clock">Start</ button>
-          < Timer phase="Work" />
-          < Timer phase="Rest" />
+          < Timer />
           </div>
       </div>
       </Provider>

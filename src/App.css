@@ -47,20 +47,16 @@
   cursor: pointer;
 }
 
-.start-clock {
-  background: #800040;
-  color: #ffffff;
-  border: 2px black solid;
-  padding: 1rem;
-  cursor: pointer;
-}
-
 .timer {
   font-family: 'Orbitron', sans-serif;
 }
 
 .start-clock {
   display: block;
-  min-width: 100vw;
-  margin-top: 2rem;
+  min-width: 50vw;
+  padding: 1rem;
+  background: #800040;
+  color: #ffffff;
+  border: 2px black solid;
+  cursor: pointer;
 }
