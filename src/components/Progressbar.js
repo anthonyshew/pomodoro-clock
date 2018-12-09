@@ -4,6 +4,27 @@ import { connect } from "react-redux";
 
 class Progressbar extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state ={
+      work: this.props.work,
+      rest: this.props.rest
+    }
+
+  this.progression = this.progression.bind(this);
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.render === "invisible"){
+        this.progression();
+    }
+}
+
+  progression() {
+    console.log('Here is where the function for the progress bar will be.');
+  }
+
   render() {
     return(
         <div className="progress">
@@ -15,12 +36,14 @@ class Progressbar extends Component {
 
 Progressbar.propTypes = {
   work: PropTypes.number.isRequired,
-  rest: PropTypes.number.isRequired
+  rest: PropTypes.number.isRequired,
+  render: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
   work: state.makeClock.work,
   rest: state.makeClock.rest,
+  render: state.render.render
 });
 
 export default connect (mapStateToProps, null)(Progressbar);

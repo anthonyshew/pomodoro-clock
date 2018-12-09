@@ -29,7 +29,7 @@ class Timer extends Component {
             
                     if (this.state.time < this.props.rest * 60) {
                         this.setState({
-                            status: 'Resting. :)'
+                            status: 'Resting.'
                         }) }
                     
                         if (this.state.time < 0) {
@@ -85,9 +85,9 @@ class Timer extends Component {
   render() {
     return(
         <div className="timer">
-        <div className="status">{this.state.status}</div>
             <button className="start-clock" onClick={this.Timer}>Start</button>
             <button className="btn-clock" onClick={this.resetTimer}>Reset</button>
+            <div className="status">{this.state.status}</div>
             <div id="display">{this.props.work + this.props.rest + " total minutes"}</div>
         </div>
     )
