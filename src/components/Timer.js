@@ -65,7 +65,6 @@ class Timer extends Component {
             document.querySelector(".start-clock").style.display = 'none';
             document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.display = 'inline-block'});
             reRender('invisible');
-            return this.state.interval;
         }
     };
 
@@ -73,8 +72,8 @@ class Timer extends Component {
         document.querySelector(".start-clock").style.display = 'inline-block';
         document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.display = 'none'});
         document.querySelector("#display").innerHTML = this.props.work + this.props.rest + " total minutes";
-            clearInterval(this.state.interval);
-            reRender('visible');
+        clearInterval(this.state.interval);
+        reRender('visible');
         this.setState({
             time: (this.props.work + this.props.rest) * 60,
             isCounting: false,

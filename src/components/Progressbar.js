@@ -8,21 +8,55 @@ class Progressbar extends Component {
     super(props)
     this.state ={
       work: this.props.work,
-      rest: this.props.rest
-    }
+      rest: this.props.rest,
+      time: (this.props.work + this.props.rest) * 60,
+      width: .5,
+      interval: '',
+      progression: () => {
+        // eslint-disable-next-line
+        let timer = this.state.time, minutes, seconds;
+        let elem = document.querySelector(".progress-bar");
+        let width = this.state.width;
+        let widthIncrement = 100.5 / ((this.props.work + this.props.rest) * 60)
+        console.log({
+          'work': this.props.work,
+          'rest': this.props.rest,
+          'width': this.state.width,
+          'widthIncrement': widthIncrement
+        })
 
-  this.progression = this.progression.bind(this);
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+    
+        minutes = minutes < 10 ? minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        elem.style.width = width + '%';
+
+        this.setState({
+          time: this.state.time - 1,
+          width: width + widthIncrement
+        });
+                    
+        if (this.state.time < 0) {
+          clearInterval(this.state.interval);
+        }
+      },
+    }
 
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.render === "invisible"){
-        this.progression();
+      this.setState({
+        interval: setInterval(this.state.progression, 1000)
+      })
+    } else {
+      this.setState({
+        interval: clearInterval(this.state.interval),
+        width: .5
+      })
     }
-}
-
-  progression() {
-    console.log('Here is where the function for the progress bar will be.');
   }
 
   render() {
