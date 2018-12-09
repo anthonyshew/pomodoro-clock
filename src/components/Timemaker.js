@@ -18,7 +18,7 @@ class Timemaker extends Component {
   }
 
   timeChange(e) {
-    if (e.target.className === "decrementer-Work") {
+    if (e.target.className === "fas fa-angle-down decrementer-Work") {
       if (this.state.workCounter >= 2) {
         let work = this.state.workCounter - 1;
         this.setState({
@@ -28,7 +28,7 @@ class Timemaker extends Component {
       } else {
         console.log("We can't do negative time!");
       }
-    } else if (e.target.className === "incrementer-Work") {
+    } else if (e.target.className === "fas fa-angle-up incrementer-Work") {
       if (this.state.workCounter <= 59) {
         let work = this.state.workCounter + 1;
         this.setState({
@@ -38,7 +38,7 @@ class Timemaker extends Component {
       } else {
         console.log("More than hour?! You don't even need a Pomodoro Clock!");
       }
-    } else if (e.target.className === "decrementer-Rest") {
+    } else if (e.target.className === "fas fa-angle-down decrementer-Rest") {
         if (this.state.restCounter >= 2) {
           let rest = this.state.restCounter - 1;
           this.setState({
@@ -48,7 +48,7 @@ class Timemaker extends Component {
         } else {
           console.log("We can't do negative time!");
         }
-      } else if (e.target.className === "incrementer-Rest") {
+      } else if (e.target.className === "fas fa-angle-up incrementer-Rest") {
         if (this.state.restCounter <= 59) {
           let rest = this.state.restCounter + 1;
           this.setState({
@@ -66,10 +66,10 @@ class Timemaker extends Component {
     return (
       <div className={"timemaker-"+this.props.phase}>
         <h2 className="phase-maker">{this.props.phase}</h2>
-        <div className="timer-setter-">
-          <span className={"decrementer-"+this.props.phase} onClick={this.timeChange}>Less time!</span>
+        <div className="timer-setter">
+          <i className={"fas fa-angle-down decrementer-"+this.props.phase} onClick={this.timeChange}></i>
           <span id="l" className="time-adjuster">{this.state.workCounter}</span>
-          <span className={"incrementer-"+this.props.phase} onClick={this.timeChange}>More time!</span>
+          <i className={"fas fa-angle-up incrementer-"+this.props.phase} onClick={this.timeChange}></i>
         </div>
       </div>
     )
@@ -77,7 +77,7 @@ class Timemaker extends Component {
     return (
       <div className={"timemaker-"+this.props.phase}>
         <h2 className="phase-maker">{this.props.phase}</h2>
-        <div className="timer-setter-">
+        <div className="timer-setter">
           <span id="l" className="time-adjuster">{this.state.workCounter}</span>
         </div>
       </div>
@@ -86,10 +86,10 @@ class Timemaker extends Component {
     return (
       <div className={"timemaker-"+this.props.phase}>
         <h2 className="phase-maker">{this.props.phase}</h2>
-        <div className="timer-setter-">
-          <span className={"decrementer-"+this.props.phase} onClick={this.timeChange}>Less time!</span>
+        <div className="timer-setter">
+          <i className={"fas fa-angle-down decrementer-"+this.props.phase} onClick={this.timeChange}></i>
           <span id="l" className="time-adjuster">{this.state.restCounter}</span>
-          <span className={"incrementer-"+this.props.phase} onClick={this.timeChange}>More time!</span>
+          <i className={"fas fa-angle-up incrementer-"+this.props.phase} onClick={this.timeChange}></i>
         </div>
       </div>
     )
@@ -97,7 +97,7 @@ class Timemaker extends Component {
   return (
     <div className={"timemaker-"+this.props.phase}>
       <h2 className="phase-maker">{this.props.phase}</h2>
-      <div className="timer-setter-">
+      <div className="timer-setter">
         <span id="l" className="time-adjuster">{this.state.restCounter}</span>
       </div>
     </div>

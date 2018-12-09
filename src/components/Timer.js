@@ -33,8 +33,8 @@ class Timer extends Component {
                         }) }
                     
                         if (this.state.time < 0) {
-                            document.querySelector(".start-clock").style.visibility = 'visible';
-                            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'hidden'});
+                            document.querySelector(".start-clock").style.display = 'inline-block';
+                            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.display = 'none'});
                             document.querySelector("#display").innerHTML = this.props.work + this.props.rest + " total minutes";
                                 clearInterval(this.state.interval);
                                 reRender('visible');
@@ -62,16 +62,16 @@ class Timer extends Component {
                 isCounting: true,
                 status: 'Working!'
             });
-            document.querySelector(".start-clock").style.visibility = 'hidden';
-            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'visible'});
+            document.querySelector(".start-clock").style.display = 'none';
+            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.display = 'inline-block'});
             reRender('invisible');
             return this.state.interval;
         }
     };
 
     resetTimer() {
-        document.querySelector(".start-clock").style.visibility = 'visible';
-        document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'hidden'});
+        document.querySelector(".start-clock").style.display = 'inline-block';
+        document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.display = 'none'});
         document.querySelector("#display").innerHTML = this.props.work + this.props.rest + " total minutes";
             clearInterval(this.state.interval);
             reRender('visible');

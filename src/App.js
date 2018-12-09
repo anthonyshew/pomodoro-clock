@@ -5,6 +5,7 @@ import store from './store';
 
 import Timemaker from './components/Timemaker.js';
 import Timer from './components/Timer.js';
+import Progressbar from './components/Progressbar.js';
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           < Timemaker phase="Rest" />
           < Timer />
           </div>
+          < Progressbar />
       </div>
       </Provider>
     );
