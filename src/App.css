@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Acme');
 
 * {
   margin: 0;
@@ -17,6 +18,8 @@
   min-width: 100vw;
   background: #4d0026;
   color: #ffffff;
+  font-family: 'Acme', serif;
+  letter-spacing: 1px;
 }
 
 .vp-center {
@@ -39,8 +42,7 @@
 }
 
 .time-adjuster {
-  margin: 0 1rem;
-  font-family: 'Orbitron', sans-serif;
+  margin: 0 2rem;
 }
 
 .incrementer-Work, .incrementer-Rest, .decrementer-Work, .decrementer-Rest {
@@ -48,19 +50,52 @@
 }
 
 .timer {
+  font-size: 2rem;
   font-family: 'Orbitron', sans-serif;
 }
 
-.start-clock, .btn-clock, .always-clock {
+.start-clock, .btn-clock {
   display: block;
-  min-width: 50vw;
+  min-width: 25vw;
+  margin: 1rem auto 0;
   padding: 1rem;
   background: #800040;
   color: #ffffff;
   border: 2px black solid;
+  border-radius: 15px;
+  font-size: 2rem;
+  font-family: 'Acme', serif;
   cursor: pointer;
 }
 
 .btn-clock {
-  visibility: hidden;
+  display: none;
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Acme', serif;
+}
+
+.timer-setter {
+  font-size: 2rem;
+}
+
+.h2 {
+  margin-top: 1rem;
+}
+
+.progress {
+  position: fixed;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 5vh;
+  background-color: #800040;
+}
+
+.progress-bar {
+  width: 1%;
+  min-height: 5vh;
+  background-color: #4CAF50;
 }
