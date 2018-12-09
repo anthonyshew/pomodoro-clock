@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import makeReducer from './makeReducer';
+import renderReducer from './renderReducer';
 
 export default combineReducers({
-    makeClock: makeReducer
+    makeClock: makeReducer,
+    render: renderReducer
 });

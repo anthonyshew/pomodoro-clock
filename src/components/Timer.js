@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
+import { reRender } from '../actions/renderActions.js'
+
+
 class Timer extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            formattedTime: (this.props.work + this.props.rest) + " minutes",
             time: (this.props.work + this.props.rest) * 60,
-            clock: (duration) => {
+            interval: '',
+            clock: () => {
                 if(this.state.isCounting === true) {
                     let timer = this.state.time, minutes, seconds;
                     minutes = parseInt(timer / 60, 10)
@@ -24,51 +27,68 @@ class Timer extends Component {
     
                     document.querySelector("#display").innerHTML = minutes + ":" + seconds;
             
-                    if (--timer < 0) {
-                        timer = duration;
-                    }
+                    if (this.state.time < this.props.rest * 60) {
+                        this.setState({
+                            status: 'Resting. :)'
+                        }) }
+                    
+                        if (this.state.time < 0) {
+                            document.querySelector(".start-clock").style.visibility = 'visible';
+                            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'hidden'});
+                            document.querySelector("#display").innerHTML = this.props.work + this.props.rest + " total minutes";
+                                clearInterval(this.state.interval);
+                                reRender('visible');
+                            this.setState({
+                                time: (this.props.work + this.props.rest) * 60,
+                                isCounting: false,
+                                status: 'Waiting...'
+                            });
+                        }
                 }
             },
             isCounting: false,
+            status: 'Waiting...'
         }
-        this.startTimer = this.startTimer.bind(this);
-        this.resumeTimer = this.resumeTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
-        this.stater = this.stater.bind(this);
+        this.Timer = this.Timer.bind(this);
+        this.resetTimer = this.resetTimer.bind(this);
+
     }
 
-    startTimer() {
+    Timer() {
+        if(document.querySelector("#display").innerHTML === this.props.work + this.props.rest + " total minutes") {
+            this.setState({
+                time: (this.props.work + this.props.rest) * 60,
+                interval: setInterval(this.state.clock, 1000),
+                isCounting: true,
+                status: 'Working!'
+            });
+            document.querySelector(".start-clock").style.visibility = 'hidden';
+            document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'visible'});
+            reRender('invisible');
+            return this.state.interval;
+        }
+    };
+
+    resetTimer() {
+        document.querySelector(".start-clock").style.visibility = 'visible';
+        document.querySelectorAll(".btn-clock").forEach(elem => {elem.style.visibility = 'hidden'});
+        document.querySelector("#display").innerHTML = this.props.work + this.props.rest + " total minutes";
+            clearInterval(this.state.interval);
+            reRender('visible');
         this.setState({
-            isCounting: true,
+            time: (this.props.work + this.props.rest) * 60,
+            isCounting: false,
+            status: 'Waiting...'
         });
-       setInterval(this.state.clock, 1000)
-    }
-
-    resumeTimer() {
-        this.setState({
-            isCounting: true,
-        })
-    }
-
-    stopTimer() {
-        clearInterval(this.state.clock);
-        this.setState({
-            isCounting: false
-        })
-    }
-
-    stater() {
-        console.log(this.state);
-    }
+    };
 
   render() {
     return(
         <div className="timer">
-            <button className="start-clock" onClick={this.startTimer}>Start</button>
-            <button className="start-clock" onClick={this.stopTimer}>Stop</button>
-            <button className="start-clock" onClick={this.resumeTimer}>Resume</button>
-            <button className="start-clock" onClick={this.stater}>Stater</button>
-            <div id="display">{this.state.formattedTime}</div>
+        <div className="status">{this.state.status}</div>
+            <button className="start-clock" onClick={this.Timer}>Start</button>
+            <button className="btn-clock" onClick={this.resetTimer}>Reset</button>
+            <div id="display">{this.props.work + this.props.rest + " total minutes"}</div>
         </div>
     )
   }
@@ -84,4 +104,4 @@ const mapStateToProps = state => ({
   rest: state.makeClock.rest,
 });
 
-export default connect (mapStateToProps, null)(Timer);
+export default connect (mapStateToProps, { reRender })(Timer);
