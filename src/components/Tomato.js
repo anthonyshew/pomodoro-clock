@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
-import tomato from '../media/tomato.png';
+import tomato from '../mediums/tomato.png';
 
-import Upbeep from '../media/restStart.wav';
-import Downbeep from '../media/restEnd.wav';
+import Upbeep from '../mediums/restStart.wav';
+import Downbeep from '../mediums/restEnd.wav';
 
 class Tomato extends Component {
 
