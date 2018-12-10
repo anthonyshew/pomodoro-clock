@@ -10,20 +10,14 @@ class Progressbar extends Component {
       work: this.props.work,
       rest: this.props.rest,
       time: (this.props.work + this.props.rest) * 60,
-      width: .5,
+      width: 1,
       interval: '',
       progression: () => {
         // eslint-disable-next-line
         let timer = this.state.time, minutes, seconds;
         let elem = document.querySelector(".progress-bar");
         let width = this.state.width;
-        let widthIncrement = 100.5 / ((this.props.work + this.props.rest) * 60)
-        console.log({
-          'work': this.props.work,
-          'rest': this.props.rest,
-          'width': this.state.width,
-          'widthIncrement': widthIncrement
-        })
+        let widthIncrement = 100 / ((this.props.work + this.props.rest) * 60);
 
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
@@ -54,7 +48,7 @@ class Progressbar extends Component {
     } else {
       this.setState({
         interval: clearInterval(this.state.interval),
-        width: .5
+        width: 1
       })
     }
   }

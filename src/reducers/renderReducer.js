@@ -1,7 +1,9 @@
 import { RENDER_UPDATE } from '../actions/types';
 
 const initialState = {
-    render: 'visible'
+    render: 'visible',
+    isWorking: false,
+    isResting: false
 }
 
 export default function(state = initialState, action) {
@@ -9,7 +11,9 @@ export default function(state = initialState, action) {
         case RENDER_UPDATE:
         return {
             ...state,
-            render: action.payload
+            render: action.payload,
+            isWorking: action.isWorking,
+            isResting: action.isResting
         };
         
         default:

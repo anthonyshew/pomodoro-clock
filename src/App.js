@@ -7,6 +7,7 @@ import Timemaker from './components/Timemaker.js';
 import Timer from './components/Timer.js';
 import Progressbar from './components/Progressbar.js';
 
+import Tomato from './components/Tomato.js';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
       <Provider store={store}>
       <div className="App">
         <div className="vp-center">
+        < Tomato />
           <h1>A Pomodoro Clock</h1>
           <h2>WORK HARD, <span className="little-text"> but rest when you need to.</span></h2>
           < Timemaker phase="Work" />

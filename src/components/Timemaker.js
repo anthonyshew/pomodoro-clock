@@ -98,7 +98,7 @@ class Timemaker extends Component {
     <div className={"timemaker-"+this.props.phase}>
       <h2 className="phase-maker">{this.props.phase}</h2>
       <div className="timer-setter">
-        <span id="l" className="time-adjuster">{this.state.restCounter}</span>
+        <span className="time-adjuster">{this.state.restCounter}</span>
       </div>
     </div>
   )
