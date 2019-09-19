@@ -3,7 +3,7 @@
 
 If you are a frequenter of Github, feel free to browse this repository to learn more about my skills.
 
-If you aren't a fellow programming junkie, you can visit this project at [www.anthonyshew.github.io/pomodoro-clock/](www.anthonyshew.github.io/pomodoro-clock/) and get to work!
+If you aren't a fellow programming junkie, you can visit this project at [www.anthonyshew.github.io/pomodoro-clock/](https://www.anthonyshew.github.io/pomodoro-clock/) and get to work!
 
 ## About This Project
 
